@@ -4,14 +4,23 @@ from lib_module.cli_inquirer import *
 def main():
 
     main_Qchain = [
-        create_listQ("main_menu", "select main menu", MAIN_Q),
+        create_listQ(questionID="main_menu", message="select main menu", choicelist=MAIN_Q),
         create_confQ(
-            "login_confirm", "login!", when={"QID": "main_menu", "choice": "login"}
+            questionID="login_confirm", message="login!", when= lambda Q: Q["main_menu"] == "login"),
+        create_confQ(
+            questionID="exit_confirm",
+            message="Do you want to exit from FHIR Client?",
+            when= lambda Q: Q["main_menu"] == "exit",
         ),
         create_confQ(
-            "exit_confirm",
-            "Do you want to exit from FHIR Client?",
-            when={"QID": "main_menu", "choice": "exit"},
+            questionID="test1",
+            message="you choose test1 menu",
+            when= lambda Q: Q["main_menu"] == "test1",
+        ),
+        create_confQ(
+            questionID="test2",
+            message="you choose test2 menu",
+            when= lambda Q: Q["main_menu"] == "test1" and Q["test1"],
         ),
     ]
 
@@ -21,9 +30,16 @@ def main():
 
         log("FHIR API CLI", color="blue", figlet=True)
         log("\t\tFHIR client by python", color="green")
+        log("\t\t")
 
         client = execute(main_Qchain)
 
 
 if __name__ == "__main__":
-    main()
+    if DEBUG:
+        main()
+    else:
+        try:
+            main()
+        except:
+            print("trouble aborted")

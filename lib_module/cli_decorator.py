@@ -3,7 +3,7 @@ import click
 import six
 from PyInquirer import Token, prompt, style_from_dict, Separator, ValidationError
 from pyfiglet import figlet_format
-from statics import *
+from lib_module.statics import *
 
 try:
     import colorama
@@ -36,11 +36,12 @@ styleset = style_from_dict(
 
 
 # log function : font/color/figuring(figlet module) available
-def log(string, color, font=BASE_LOG_FONT, figlet=False):
+def log(string, color="blue", font=BASE_LOG_FONT, figlet=False):
 
     if colored:
         if figlet:
-            six.print_(colored(figlet_format(string, font=font), color))  # figlet log
+            # figlet log
+            six.print_(colored(figlet_format(string, font=font), color))
         else:
             six.print_(colored(string, color))  # original log
     else:
