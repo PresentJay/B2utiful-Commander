@@ -1,12 +1,25 @@
 from lib_module.cli_inquirer import *
+import json
 
 
 def main():
 
+    with open("./lib_module/Qchain.json") as file:
+        data = json.load(file)
+
+    rest = RESTful()
+    Qchain = []
+    
+    for ctx in data:
+        qid = ctx.get("name")
+        msg = ctx.get("message")
+        chain = 
+        
+        if ctx.get("type") == "list":
+            
+
     main_Qchain = [
-        create_listQ(
-            questionID="main_menu", message="select main menu", choicelist=MAIN_Q
-        ),
+        create_listQ(questionID="main_menu", message="select menu", choicelist=MAIN_Q),
         create_confQ(
             questionID="login_confirm",
             message="login!",
@@ -44,6 +57,15 @@ def main():
             )
         )
         log("\t")
+        if rest.url:
+            log(
+                coloredList=getColoredTexts(
+                    [
+                        {"string": "\ttarget url : ", "color": "white"},
+                        {"string": rest.url, "color": "yellow"},
+                    ]
+                )
+            )
 
         client = execute(main_Qchain)
 

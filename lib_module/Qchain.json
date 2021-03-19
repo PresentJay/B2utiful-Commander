@@ -1,0 +1,33 @@
+{
+    "index": 1,
+    "keep": true,
+    "type": "list",
+    "name": "main_menu",
+    "message": "select menu",
+    "chainItems": [
+        {
+            "index": 2,
+            "keep": false,
+            "type": "",
+            "name": "getSession",
+            "message": "",
+            "chainItems": []
+        },
+        {
+            "index": 3,
+            "keep": false,
+            "type": "",
+            "name": "SetURL",
+            "message": "",
+            "chainItems": []
+        },
+        {
+            "index": 4,
+            "keep": false,
+            "type": "",
+            "name": "RunHTTPMethod",
+            "message": "",
+            "chainItems": []
+        }
+    ]
+}

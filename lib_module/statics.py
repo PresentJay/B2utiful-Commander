@@ -1,3 +1,19 @@
+class RESTful:
+    def __init__(self):
+        self.http = "http://"
+        self.https = "https://"
+        self.get = "get"
+        self.post = "post"
+        self.patch = "patch"
+        self.delete = "delete"
+
+        self.LocalHost = "localhost"
+        self.Referer = "Referer"
+
+    def set_Url(self, url):
+        self.url = url
+
+
 # set Debug mode in entire project
 DEBUG = True
 
@@ -16,15 +32,20 @@ PAGEID = "pageid"
 UID = "uid"
 CATEGORY = "category"
 
-REFERER = "Referer"
-HTTP = "http://"
-HTTPS = "https://"
-LOCALHOST = "localhost"
-
-HTTP_GET = "get"
-HTTP_POST = "post"
-HTTP_PATCH = "patch"
-HTTP_DELETE = "delete"
-
 PRETTY = "pretty"
 SUMMARY = "_summary"
+
+
+""" directory managing settings """
+IGNORE_FILES = [
+    ".vscode",
+    "venv",
+    ".gitignore",
+    "readme.md",
+    ".git",
+    "__pycache__",
+    "LICENSE",
+    "lib_module",
+    "main.py",
+    "requirements.txt",
+]
