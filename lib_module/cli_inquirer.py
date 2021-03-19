@@ -1,11 +1,12 @@
 from lib_module.cli_decorator import *
+from PyInquirer import prompt
 
 
 def ChainQuestion_byChoice(chainFrom, QID, ChoiceValue):
     return chainFrom.get(QID) == ChoiceValue
 
 
-def create_listQ(questionID, choicelist, message="blank", when=None, default=None):
+def create_listQ(questionID, choicelist, message="blank", when=None):
     chainitem = {
         "type": "list",
         "name": questionID,
@@ -29,9 +30,9 @@ def create_confQ(questionID, message="blank", when=None):
         "type": "confirm",
         "name": questionID,
     }
-    
+
     chainitem["message"] = message
-    
+
     if when:
         chainitem["when"] = when
 
