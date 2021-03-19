@@ -1,35 +1,60 @@
-# FHIR Resource List
+class fhir:
+    def __str__(self):
+        return self
 
-# Individuals
-PATIENT = "Patient"
-PRACTITIONER = "Practitioner"
-PRACTITIONER_ROLE = "PractitionerRole"
-PERSON = "Person"
-RELATED_PERSON = "RelatedPerson"
+    def __init__(self):
+        self.resource = resource()
 
-# Entitles
-ORGANIZATION = "Organization"
-LOCATION = "Location"
 
-# Terminology
-CODESYSTEM = "CodeSystem"
-VALUESET = "ValueSet"
+class resource(fhir):
+    def __str__(self):
+        return self
 
-# Conformance
-SEARCH_PARAMETER = "SearchParameter"
+    def __init__(self, *args, **kwar1gs):
+        # Individuals
+        self.Patient = "Patient"
+        self.Practitioner = "Practitioner"
+        self.PractitionerRole = "PractitionerRole"
+        self.Person = "Person"
+        self.RelatedPerson = "RelatedPerson"
 
-# Summary
-PROCEDURE = "Procedure"
-CONDITION = "Condition"
+        # Entitles
+        self.Organization = "Organization"
+        self.Location = "Location"
 
-# Diagnostics
-OBSERVATION = "Observation"
+        # Terminology
+        self.CodeSystem = "CodeSystem"
+        self.ValueSet = "ValueSet"
 
-# Management
-ENCOUNDER = "Encounter"
+        # Conformance
+        self.SearchParameter = "SearchParameter"
 
-# Medication
-MEDICATION = "Medication"
+        # Summary
+        self.Procedure = "Procedure"
+        self.Condition = "Condition"
 
-# Security
-CONSENT = "Consent"
+        # Diagnostics
+        self.Observation = "Observation"
+
+        # Management
+        self.Encounter = "Encounter"
+
+        # Medication
+        self.Medication = "Medication"
+
+        # Security
+        self.Consent = "Consent"
+
+
+class http(fhir):
+    def __init__(self):
+        # [FHIR HTTP]
+        self.Search = "Search"
+        self.Read = "Read"
+        self.History = "History"
+        self.Create = "Create"
+        self.Delete = "Delete"
+        self.Update = "Update"
+
+    def __str__(self):
+        return self

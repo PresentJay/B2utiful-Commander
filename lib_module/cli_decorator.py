@@ -18,7 +18,7 @@ except ImportError:
 # # # #
 
 
-""" Commandline Decorataion Line """
+""" Commandline ataion Line """
 
 # define command-line colorset
 styleset = style_from_dict(
