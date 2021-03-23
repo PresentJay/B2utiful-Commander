@@ -17,6 +17,19 @@ except ImportError:
     colored = None
 # # # #
 
+def main_logo(title, msg, auth=""):
+    log(title, color="blue", figlet=True)
+    log("\t\t" + msg, color="green")
+    log(
+        coloredList=getColoredTexts(
+            [
+                {"string": "\t\t\tpowered by ", "color": "white"},
+                {"string": auth, "color": "cyan"},
+            ]
+        )
+    )
+    log("\t")
+
 
 def clear_Terminal():
     print(u"{}[2J{}[;H".format(chr(27), chr(27)), end="")

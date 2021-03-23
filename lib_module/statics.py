@@ -45,8 +45,6 @@ CHECKBOX = "checkbox"
 CONFIRM = "confirm"
 INPUT = "input"
 
-ROOT = "root"
-
 # Common statics
 PAGEID = "pageid"
 UID = "uid"

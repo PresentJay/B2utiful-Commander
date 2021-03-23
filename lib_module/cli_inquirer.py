@@ -32,7 +32,7 @@ def make_chain(chain, chainItem, chainCond=[]):
                 Qlist.append(item[NAME])
 
         # exit pattern 검사 1 : menu separation
-        if chainItem[EXIT]:
+        if EXIT in chainItem.keys():
             append_sep(Qlist)
             Qlist.append(EXIT)
         Q[CHOICES] = Qlist
@@ -41,13 +41,8 @@ def make_chain(chain, chainItem, chainCond=[]):
     if chainItem[TYPE] == CHECKBOX:
         Q[QMARK] = "😃"
 
-    if ROOT not in chainItem.keys():
+    if len(chainCond) > 0:
         Q[WHEN] = lambda answers: when_chain(chainCond, answers)
-
-    # if ROOT in chainItem.keys():
-    #     chainCond = lambda answers: True
-    # else:
-    #     Q[WHEN] = lambda answers: chainCond
 
     # 최종 결정된 Q를 chain에 얹음
     chain.append(Q)
@@ -67,7 +62,6 @@ def make_chain(chain, chainItem, chainCond=[]):
     if len(chainItem[CHOICES]) > 0:
 
         for item in chainItem[CHOICES]:
-            if not chainItem[ROOT]:
-                chainCond.append((chainItem[NAME], item[NAME]))
+            chainCond.append((chainItem[NAME], item[NAME]))
 
             make_chain(chain, item, chainCond)

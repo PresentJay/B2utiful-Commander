@@ -2,20 +2,6 @@ from lib_module.cli_inquirer import *
 import json
 
 
-def main_logo(title, msg, auth=""):
-    log(title, color="blue", figlet=True)
-    log("\t\t" + msg, color="green")
-    log(
-        coloredList=getColoredTexts(
-            [
-                {"string": "\t\t\tpowered by ", "color": "white"},
-                {"string": auth, "color": "cyan"},
-            ]
-        )
-    )
-    log("\t")
-
-
 def main():
     with open("./lib_module/Qchain.json") as file:
         data = json.load(file)

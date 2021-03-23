@@ -1,6 +1,5 @@
 {
     "index": 1,
-    "root": true,
     "type": "list",
     "name": "main_menu",
     "message": "select menu",
@@ -15,10 +14,25 @@
         },
         {
             "index": 3,
-            "type": "confirm",
+            "type": "list",
             "name": "SetURL",
             "message": "test2",
-            "choices": []
+            "choices": [
+                {
+                    "index": 5,
+                    "type": "confirm",
+                    "name": "getSession",
+                    "message": "test2-1",
+                    "choices": []
+                },
+                {
+                    "index": 6,
+                    "type": "confirm",
+                    "name": "getSession",
+                    "message": "test2-2",
+                    "choices": []
+                }
+            ]
         },
         {
             "index": 4,
