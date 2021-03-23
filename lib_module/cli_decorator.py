@@ -1,6 +1,6 @@
 # Command line decorator code
 import six
-from PyInquirer import Token, style_from_dict
+from PyInquirer import Token, style_from_dict, Separator
 from pyfiglet import figlet_format
 from lib_module.statics import *
 
@@ -16,6 +16,14 @@ try:
 except ImportError:
     colored = None
 # # # #
+
+
+def clear_Terminal():
+    print(u"{}[2J{}[;H".format(chr(27), chr(27)), end="")
+
+
+def append_sep(chainFrom):
+    chainFrom.append(Separator("\n - - - - - - - - - - - - - - - - - - - \n"))
 
 
 """ Commandline ataion Line """

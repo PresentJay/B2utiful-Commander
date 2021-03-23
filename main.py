@@ -2,61 +2,34 @@ from lib_module.cli_inquirer import *
 import json
 
 
-def main():
+def main_logo(title, msg, auth=""):
+    log(title, color="blue", figlet=True)
+    log("\t\t" + msg, color="green")
+    log(
+        coloredList=getColoredTexts(
+            [
+                {"string": "\t\t\tpowered by ", "color": "white"},
+                {"string": auth, "color": "cyan"},
+            ]
+        )
+    )
+    log("\t")
 
+
+def main():
     with open("./lib_module/Qchain.json") as file:
         data = json.load(file)
 
     rest = RESTful()
     Qchain = []
-    
-    for ctx in data:
-        qid = ctx.get("name")
-        msg = ctx.get("message")
-        chain = 
-        
-        if ctx.get("type") == "list":
-            
 
-    main_Qchain = [
-        create_listQ(questionID="main_menu", message="select menu", choicelist=MAIN_Q),
-        create_confQ(
-            questionID="login_confirm",
-            message="login!",
-            when=lambda Q: Q["main_menu"] == "login",
-        ),
-        create_confQ(
-            questionID="exit_confirm",
-            message="Do you want to exit from FHIR Client?",
-            when=lambda Q: Q["main_menu"] == "exit",
-        ),
-        create_confQ(
-            questionID="test1",
-            message="you choose test1 menu",
-            when=lambda Q: Q["main_menu"] == "test1",
-        ),
-        create_confQ(
-            questionID="test2",
-            message="you choose test2 menu",
-            when=lambda Q: Q["main_menu"] == "test1" and Q["test1"],
-        ),
-    ]
+    make_chain(Qchain, data)
 
+    # event loop
     while True:
-        # clear terminal code
-        print(u"{}[2J{}[;H".format(chr(27), chr(27)), end="")
+        clear_Terminal()
+        main_logo(title="FHIR API CLI", msg="FHIR client by python", auth="PresentJay")
 
-        log("FHIR API CLI", color="blue", figlet=True)
-        log("\t\tFHIR client by python", color="green")
-        log(
-            coloredList=getColoredTexts(
-                [
-                    {"string": "\t\t\tpowered by ", "color": "white"},
-                    {"string": "presentJay", "color": "cyan"},
-                ]
-            )
-        )
-        log("\t")
         if rest.url:
             log(
                 coloredList=getColoredTexts(
@@ -66,10 +39,11 @@ def main():
                     ]
                 )
             )
+        log("\t")
 
-        client = execute(main_Qchain)
+        client = execute(Qchain)
 
-        if client["exit_confirm"]:
+        if EXIT_COND in client.keys() and client[EXIT_COND]:
             break
 
 

@@ -7,11 +7,14 @@ class RESTful:
         self.patch = "patch"
         self.delete = "delete"
 
-        self.LocalHost = "localhost"
-        self.Referer = "Referer"
+        self.localhost = "localhost"
+        self.referer = "Referer"
+        self.url = False
 
-    def set_Url(self, url):
+    def set_Url(self, url, port=None):
         self.url = url
+        if port:
+            url = url + str(port) + "/"
 
 
 # set Debug mode in entire project
@@ -25,7 +28,24 @@ GET_SESSION = "GetSession"
 SET_URL = "setURL"
 RUN_HTTPMETHOD = "RunHTTPmethod"
 EXIT = "exit"
+EXIT_COND = "exit_confirm"
 MAIN_Q = [GET_SESSION, SET_URL, RUN_HTTPMETHOD, EXIT]
+
+
+# cli_inquirer statics
+TYPE = "type"
+NAME = "name"
+QMARK = "qmark"
+MESSAGE = "message"
+CHOICES = "choices"
+WHEN = "when"
+
+LIST = "list"
+CHECKBOX = "checkbox"
+CONFIRM = "confirm"
+INPUT = "input"
+
+ROOT = "root"
 
 # Common statics
 PAGEID = "pageid"
