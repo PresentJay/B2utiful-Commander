@@ -7,15 +7,22 @@ def execute(Q_list, style=styleset):
     return cli
 
 
-def when_chain(condition_list, chainFrom):
-    retval = True
-    for item in condition_list:
-        retval = retval and (chainFrom[item[0]] == item[1])
-    return retval
+def chain_explorer(chain, chainFrom, target=None):
+    cursor = chain
+    when = True
+    if target:
+        target_list = target.split("-")
+    while cursor[INDEX] != target:
+        next_ = cursor[CHOICES][int(target_list.pop(0))]
+        when = when and (chainFrom[cursor[NAME]] == next_[NAME])
+        cursor = next_
+        
+    return when
 
 
 def make_chain(chain, chainItem, chainCond=[]):
     Q = {
+        INDEX: chainItem[INDEX],
         NAME: chainItem[NAME],
         TYPE: chainItem[TYPE],
         MESSAGE: chainItem[MESSAGE],
@@ -41,8 +48,9 @@ def make_chain(chain, chainItem, chainCond=[]):
     if chainItem[TYPE] == CHECKBOX:
         Q[QMARK] = "😃"
 
-    if len(chainCond) > 0:
-        Q[WHEN] = lambda answers: when_chain(chainCond, answers)
+    if chainItem[INDEX] != ROOT:
+        Q[WHEN] = lambda answers: chain_explorer(chain=chain, chainFrom= answers, target=chainItem[INDEX])
+        
 
     # 최종 결정된 Q를 chain에 얹음
     chain.append(Q)
@@ -51,9 +59,9 @@ def make_chain(chain, chainItem, chainCond=[]):
     if EXIT in chainItem.keys():
         chain.append(
             {
-                TYPE: "confirm",
-                NAME: "exit_confirm",
-                MESSAGE: "Do you want to exit from Client?",
+                TYPE: CONFIRM,
+                NAME: EXIT_COND,
+                MESSAGE: "Do you want to exit from " + CLIENT_TITLE + "?",
                 WHEN: lambda answers: answers[chainItem[NAME]] == EXIT,
             }
         )

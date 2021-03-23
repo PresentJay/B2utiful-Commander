@@ -17,6 +17,8 @@ class RESTful:
             url = url + str(port) + "/"
 
 
+CLIENT_TITLE = "Fhir Client"
+
 # set Debug mode in entire project
 DEBUG = True
 
@@ -39,6 +41,8 @@ QMARK = "qmark"
 MESSAGE = "message"
 CHOICES = "choices"
 WHEN = "when"
+INDEX = "index"
+ROOT = "root"
 
 LIST = "list"
 CHECKBOX = "checkbox"

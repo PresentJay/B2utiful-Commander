@@ -5,12 +5,12 @@ import json
 def main():
     with open("./lib_module/Qchain.json") as file:
         data = json.load(file)
-
+        
     rest = RESTful()
     Qchain = []
 
     make_chain(Qchain, data)
-
+    
     # event loop
     while True:
         clear_Terminal()
@@ -41,3 +41,4 @@ if __name__ == "__main__":
             main()
         except BaseException:
             print("trouble aborted")
+            

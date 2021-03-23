@@ -1,41 +1,41 @@
 {
-    "index": 1,
+    "index": "root",
     "type": "list",
     "name": "main_menu",
     "message": "select menu",
     "exit": true,
     "choices": [
         {
-            "index": 2,
+            "index": "0",
             "type": "confirm",
             "name": "getSession",
             "message": "test1",
             "choices": []
         },
         {
-            "index": 3,
+            "index": "1",
             "type": "list",
             "name": "SetURL",
             "message": "test2",
             "choices": [
                 {
-                    "index": 5,
+                    "index": "1-0",
                     "type": "confirm",
-                    "name": "getSession",
-                    "message": "test2-1",
+                    "name": "test1-0",
+                    "message": "test1-0",
                     "choices": []
                 },
                 {
-                    "index": 6,
+                    "index": "1-1",
                     "type": "confirm",
-                    "name": "getSession",
-                    "message": "test2-2",
+                    "name": "test1-1",
+                    "message": "test1-1",
                     "choices": []
                 }
             ]
         },
         {
-            "index": 4,
+            "index": "2",
             "type": "confirm",
             "name": "RunHTTPMethod",
             "message": "test3",
