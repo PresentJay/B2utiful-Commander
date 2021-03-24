@@ -7,20 +7,22 @@ def execute(Q_list, style=styleset):
     return cli
 
 
-def chain_explorer(chain, chainFrom, target=None):
-    cursor = chain
+def chain_explorer(cursor, chainFrom, target=None):
     when = True
     if target:
         target_list = target.split("-")
-    while cursor[INDEX] != target:
-        next_ = cursor[CHOICES][int(target_list.pop(0))]
-        when = when and (chainFrom[cursor[NAME]] == next_[NAME])
-        cursor = next_
+        # if cursor[INDEX] == ROOT:
+        #     when = when and (chainFrom[cursor[NAME]] == )
+        while cursor[INDEX] != target:
+            next_ = cursor[CHOICES][int(target_list.pop(0))]
+            when = when and (chainFrom[cursor[NAME]] == next_[NAME])
+            cursor = next_
         
     return when
 
-
-def make_chain(chain, chainItem, chainCond=[]):
+# chain : main에서 Q list를 추가하는 곳
+# chainItem : recursive하게 Q를 생성, 
+def make_chain(chain, chainItem, FullChain):
     Q = {
         INDEX: chainItem[INDEX],
         NAME: chainItem[NAME],
@@ -49,7 +51,7 @@ def make_chain(chain, chainItem, chainCond=[]):
         Q[QMARK] = "😃"
 
     if chainItem[INDEX] != ROOT:
-        Q[WHEN] = lambda answers: chain_explorer(chain=chain, chainFrom= answers, target=chainItem[INDEX])
+        Q[WHEN] = lambda answers: chain_explorer(FullChain, chainFrom= answers, target=chainItem[INDEX])
         
 
     # 최종 결정된 Q를 chain에 얹음
@@ -70,6 +72,4 @@ def make_chain(chain, chainItem, chainCond=[]):
     if len(chainItem[CHOICES]) > 0:
 
         for item in chainItem[CHOICES]:
-            chainCond.append((chainItem[NAME], item[NAME]))
-
-            make_chain(chain, item, chainCond)
+            make_chain(chain, item, FullChain)

@@ -9,7 +9,7 @@ def main():
     rest = RESTful()
     Qchain = []
 
-    make_chain(Qchain, data)
+    make_chain(Qchain, data, data)
     
     # event loop
     while True:

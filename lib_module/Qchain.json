@@ -38,7 +38,7 @@
             "index": "2",
             "type": "confirm",
             "name": "RunHTTPMethod",
-            "message": "test3",
+            "message": "test2",
             "choices": []
         }
     ]
