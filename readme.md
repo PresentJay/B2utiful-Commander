@@ -1,8 +1,18 @@
 # B2utiful-Commander for python
 
-- - -
+- Specification [TBD]
+
+----
+
+[#need to clear package items - TBD]
+
 ## - First Package -
-# FHIR-RESTful-API-CommandLineInterface-Client-Python
+# RESTful-API-Client
+
+## - Second Package -
+# RESTful-API-Client-for-FHIR
+
+----
 
 ## - Installation via clonning "master" branch (traditional)
 
@@ -34,10 +44,10 @@
 
 - Linting/Formatting module(python) : flake8/black
 - Python version : 3.9.2 (64 bit)
-- OS : Windows 10 Enterprise
 
 - Testing desktop
-    </br>[1]　(cpu)i7-8650U / (RAM)16GB / (GPU)-
+    </br>[1]　(cpu)i7-8650U / (RAM)16GB / (GPU)- / Windows10 Enterprise
+    </br>[2]  (cpu)i7-8550U / (RAM)8GB / (GPU)- / Windows10 Education
 
 </br>
 </br>
